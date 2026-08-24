@@ -2716,6 +2716,26 @@ define Device/plasmacloud_pax1800-lite
 endef
 TARGET_DEVICES += plasmacloud_pax1800-lite
 
+define Device/qihoo_360-t5
+  $(Device/dsa-migration)
+  $(Device/nand)
+  DEVICE_VENDOR := Qihoo
+  DEVICE_MODEL := 360 T5
+  DEVICE_ALT0_VENDOR := Qihoo
+  DEVICE_ALT0_MODEL := AC1200
+  DEVICE_DTS := mt7621_qihoo_360-t5
+  IMAGE_SIZE := 129024k
+  KERNEL_LOADADDR := 0x82000000
+  KERNEL := kernel-bin | relocate-kernel $(loadaddr-y) | lzma | \
+	fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb
+  DEVICE_PACKAGES += kmod-mt7603 kmod-mt7615e kmod-mt7615-firmware \
+	-uboot-envtools
+  IMAGES += factory.bin
+  IMAGE/factory.bin := append-kernel | pad-to $$(KERNEL_SIZE) | \
+	append-ubi | check-size
+endef
+TARGET_DEVICES += qihoo_360-t5
+
 define Device/raisecom_msg1500-x-00
   $(Device/nand)
   $(Device/uimage-lzma-loader)
