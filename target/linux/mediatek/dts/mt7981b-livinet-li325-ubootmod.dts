@@ -1,0 +1,37 @@
+// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+/*
+ * Copyright (C) 2023 Tianling Shen <cnsztl@immortalwrt.org>
+ */
+
+/dts-v1/;
+#include "mt7981b-livinet-li325.dts"
+
+/ {
+	model = "Livinet Li325 (custom U-Boot layout)";
+	compatible = "livinet,li325-ubootmod", "mediatek,mt7981";
+};
+
+&spi0 {
+	spi_nand: flash@0 {
+		partitions: partitions {
+		/delete-node/ partition@580000;
+		/delete-node/ partition@6580000;
+		/delete-node/ partition@6680000;
+			ubi: partition@580000 {
+				label = "ubi";
+				reg = <0x580000 0x7000000>;
+			};
+
+			partition@7580000 {
+				label = "zrsave";
+				reg = <0x7580000 0x100000>;
+			};
+
+			partition@7680000 {
+				label = "config2";
+				reg = <0x7680000 0x100000>;
+				read-only;
+			};
+		};
+	};
+};

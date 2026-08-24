@@ -2368,6 +2368,56 @@ define Device/livinet_li320
 endef
 TARGET_DEVICES += livinet_li320
 
+define Device/livinet_li325
+  DEVICE_VENDOR := Livinet
+  DEVICE_MODEL := Li325 (stock layout)
+  DEVICE_DTS := mt7981b-livinet-li325
+  DEVICE_DTS_DIR := ../dts
+  DEVICE_PACKAGES := kmod-mt7915e kmod-mt7981-firmware mt7981-wo-firmware
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+  SUPPORTED_DEVICES += mediatek,mt7981-spim-snand-gsw-rfb
+endef
+TARGET_DEVICES += livinet_li325
+
+define Device/livinet_li325-ubootmod
+  DEVICE_VENDOR := Livinet
+  DEVICE_MODEL := Li325
+  DEVICE_VARIANT := (custom U-Boot layout)
+  DEVICE_DTS := mt7981b-livinet-li325-ubootmod
+  DEVICE_DTS_DIR := ../dts
+  DEVICE_PACKAGES := kmod-mt7915e kmod-mt7981-firmware mt7981-wo-firmware
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+  SUPPORTED_DEVICES += mediatek,mt7981-spim-snand-gsw-rfb
+endef
+TARGET_DEVICES += livinet_li325-ubootmod
+
+define Device/livinet_li323
+  DEVICE_VENDOR := Livinet
+  DEVICE_MODEL := Li323
+  DEVICE_VARIANT := (stock layout)
+  DEVICE_DTS := mt7981b-livinet-li323
+  DEVICE_DTS_DIR := ../dts
+  DEVICE_PACKAGES := kmod-mt7915e kmod-mt7981-firmware kmod-usb3 mt7981-wo-firmware automount
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+  SUPPORTED_DEVICES += mediatek,mt7981-spim-snand-gsw-rfb
+endef
+TARGET_DEVICES += livinet_li323
+
+define Device/livinet_li323-ubootmod
+  DEVICE_VENDOR := Livinet
+  DEVICE_MODEL := Li323
+  DEVICE_VARIANT := (custom U-Boot layout)
+  DEVICE_DTS := mt7981b-livinet-li323-ubootmod
+  DEVICE_DTS_DIR := ../dts
+  DEVICE_PACKAGES := kmod-mt7915e kmod-mt7981-firmware kmod-usb3 mt7981-wo-firmware automount
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+  SUPPORTED_DEVICES += mediatek,mt7981-spim-snand-gsw-rfb
+endef
+TARGET_DEVICES += livinet_li323-ubootmod
+
+
+
+
 define Device/mediatek_mt7981-rfb
   DEVICE_VENDOR := MediaTek
   DEVICE_MODEL := MT7981 rfb
