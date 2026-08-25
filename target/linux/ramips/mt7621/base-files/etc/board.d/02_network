@@ -158,6 +158,9 @@ ramips_setup_interfaces()
 	mqmaker,witi)
 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4" "wan1 wan2"
 		;;
+	livinet,li173)
+		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4" "wan"
+		;;
 	qihoo,360-t5)
 		ucidef_set_interfaces_lan_wan "lan0 lan1 wan"
 		;;
@@ -276,6 +279,11 @@ ramips_setup_macs()
 		lan_mac=$(mtd_get_mac_ascii Config lan_hwaddr)
 		wan_mac=$(mtd_get_mac_ascii Config wan_hwaddr)
 		label_mac=$lan_mac
+		;;
+	livinet,li173)
+		wan_mac=$(mtd_get_mac_binary factory 0xe000)
+		lan_mac=$(macaddr_add "$wan_mac" 1)
+		label_mac=$wan_mac
 		;;
 	tplink,er605-v1)
 		label_mac=$(mtd_get_mac_uci_config "tddp")

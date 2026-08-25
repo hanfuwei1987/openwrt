@@ -157,6 +157,12 @@ linksys,ea8100-v2)
 	ucidef_set_led_netdev "lan4" "lan4 link" "green:lan4" "lan4" "link"
 	ucidef_set_led_netdev "wan" "wan link" "green:wan" "wan" "link"
 	;;
+livinet,li173)
+	ucidef_set_led_default "power" "Power" "green:power" "1"
+	ucidef_set_led_netdev "wan" "WAN" "green:wan" "wan" "link tx rx"
+	ucidef_set_led_netdev "wlan2g" "WiFi 2.4GHz" "green:wlan-2ghz" "phy0-ap0"
+	ucidef_set_led_netdev "wlan5g" "WiFi 5GHz" "green:wlan-5ghz" "phy1-ap0"
+	;;
 meig,slt866)
 	ucidef_set_led_netdev "lan" "eth" "blue:lanwan" "lan" "link tx rx"
 	ucidef_set_led_netdev "wwan0" "net" "blue:internet" "wwan0" "link tx rx"

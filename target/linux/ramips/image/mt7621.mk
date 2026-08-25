@@ -2208,6 +2208,18 @@ define Device/linksys_re7000
 endef
 TARGET_DEVICES += linksys_re7000
 
+
+define Device/livinet_li173
+  $(Device/dsa-migration)
+  IMAGE_SIZE := 15872k
+  DEVICE_VENDOR := Livinet
+  DEVICE_MODEL := Li173
+  DEVICE_DTS := mt7621_livinet_li173
+  DEVICE_PACKAGES := kmod-mt7603 kmod-mt7615e kmod-mt7663-firmware-ap \
+	-uboot-envtools
+endef
+TARGET_DEVICES += livinet_li173
+
 define Device/maginon_mc-1200ac
   $(Device/dsa-migration)
   DEVICE_VENDOR := Maginon
