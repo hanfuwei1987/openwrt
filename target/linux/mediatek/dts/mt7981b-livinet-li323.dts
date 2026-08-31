@@ -184,7 +184,7 @@
 
 			ubi: partition@580000 {
 				label = "ubi";
-				reg = <0x580000 0x7000000>;
+				reg = <0x580000 0x6000000>;
 			};
 		};
 	};
@@ -321,5 +321,5 @@
 
 &xhci {
 	status = "okay";
-	mediatek,u3p-dis-msk = <0x1>;
+	mediatek,u3p-dis-msk = <0x0>;
 };
